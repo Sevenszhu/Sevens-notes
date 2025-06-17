@@ -1,0 +1,20 @@
+删除软件
+方法一、如果你知道要删除软件的具体名称，可以使用
+
+
+sudo apt-get remove --purge 软件名称  
+sudo apt-get autoremove --purge 软件名称 
+方法二、如果不知道要删除软件的具体名称，可以使用
+
+
+dpkg --get-selections | grep ‘软件相关名称’
+sudo apt-get purge 一个带core的package，如果没有带core的package，则是情况而定。
+
+ 
+清理残留数据
+dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P 
+————————————————
+
+                            版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+                        
+原文链接：https://blog.csdn.net/jiayoudangdang/article/details/79943065

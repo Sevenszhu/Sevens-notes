@@ -1,0 +1,3 @@
+set -o vi # 临时开启 vi 模式
+vi ~/.bashrc # 在其中写入 `set -o vi`
+source ~/.bashrc # 刷新配置

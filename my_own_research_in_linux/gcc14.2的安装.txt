@@ -1,0 +1,56 @@
+首先说明，大多数安装教程都是屎，要么配置不全，要么操作不全
+有一个例外https://www.cnblogs.com/infyniteheap/p/18240316，不错
+
+Step 1
+更新软件包
+向终端输入：
+sudo apt update && sudo apt upgrade
+
+Step 2
+安装编译GCC所需的软件包
+向终端输入：
+sudo apt install g++ libc6-dev python3 gnat gdc gm2 gawk binutils gzip bzip2 make tar perl libgmp-dev libmpfr-dev libmpc-dev libisl-dev zstd gettext autoconf m4 automake gperf dejagnu expect tcl autogen guile-3.0 flex texinfo texlive sphinx-common git ssh diffutils patch libtool bison byacc gfortran
+
+Step 3
+从GitHub上克隆代码到本地
+向终端输入：
+git clone https://gcc.gnu.org/git/gcc.git
+（当然也可以在网上下软件包）
+
+（https://mirrors.cernet.edu.cn/gcc.git这个镜像网站，下载速度会快一点）
+
+Step 4
+确认安装版本
+向终端输入：
+cd gcc //打开安装的gcc文件夹
+git checkout releases/gcc-14.2.0 //切换tag到某个release版
+//最新发行版本号可以到gcc官网查询（https://gcc.gnu.org/）
+
+Step 5
+开始安装
+向终端输入：
+cd .. //打开先前的文件夹
+mkdir gcc_build && cd gcc_build //构建配置文件夹
+../gcc/configure --prefix=/usr/local/gcc-14.2.0 --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --enable-languages=c,c++,jit,lto --enable-bootstrap --enable-checking=release --enable-host-shared --enable-shared --enable-static --disable-multilib --with-build-config=bootstrap-lto --with-boot-ldflags=-static-libstdc++ --with-gnu-as --with-gnu-ld --with-stage1-ldflags=-static-libstdc++ --with-system-zlib --with-target-system-zlib=auto --enable-graphite --enable-lto --enable-vtable-verify --with-tune=generic --enable-threads=posix --enable-libgomp --enable-libatomic --enable-libstdcxx-debug --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --with-libiconv --with-default-libstdcxx-abi=new --enable-cet --enable-default-pie --enable-gnu-unique-object --enable-locale=gnu --enable-cxx-locale=gnu --enable-nls --without-included-gettext --enable-plugin --enable-linker-build-id --enable-link-serialization=2 --enable-fully-dynamic-string --without-cuda-driver //编译配置
+make -j$(nproc) profiledbootstrap
+sudo make install
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/local/gcc-14.2.0/bin/gcc 10 && sudo update-alternatives --install /usr/bin/g++ g++ /usr/local/gcc-14.2.0/bin/g++ 10 //替换掉系统原来安装的gcc
+
+Step 5
+检查安装
+向终端输入：
+gcc -v //检查版本编号
+
+以14.2为例
+sevenszhu@sevenszhu gcc_build$ gcc -v
+使用内建 specs。
+COLLECT_GCC=gcc
+COLLECT_LTO_WRAPPER=/usr/local/gcc-14.2.0/libexec/gcc/x86_64-linux-gnu/14.2.0/lto-wrapper
+目标：x86_64-linux-gnu
+配置为：../gcc/configure --prefix=/usr/local/gcc-14.2.0 --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --enable-languages=c,c++,jit,lto --enable-bootstrap --enable-checking=release --enable-host-shared --enable-shared --enable-static --disable-multilib --with-build-config=bootstrap-lto --with-boot-ldflags=-static-libstdc++ --with-gnu-as --with-gnu-ld --with-stage1-ldflags=-static-libstdc++ --with-system-zlib --with-target-system-zlib=auto --enable-graphite --enable-lto --enable-vtable-verify --with-tune=generic --enable-threads=posix --enable-libgomp --enable-libatomic --enable-libstdcxx-debug --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --with-libiconv --with-default-libstdcxx-abi=new --enable-cet --enable-default-pie --enable-gnu-unique-object --enable-locale=gnu --enable-cxx-locale=gnu --enable-nls --without-included-gettext --enable-plugin --enable-linker-build-id --enable-link-serialization=2 --enable-fully-dynamic-string --without-cuda-driver
+线程模型：posix
+支持的 LTO 压缩算法：zlib
+gcc 版本 14.2.0 (GCC)
+
+那么，就成功了！！
+

@@ -1,0 +1,16 @@
+首先检查node.js的安装
+使用命令：
+node -v
+
+未安装，请安装，已安装，使用apt
+使用以下命令，添加yarn的apt仓库
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+更新 APT 包索引并安装 Yarn：
+sudo apt update
+sudo apt install yarn
+
+验证安装
+yarn --version
+

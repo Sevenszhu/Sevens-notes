@@ -1,0 +1,10 @@
+蓝牙搜索不到的时候，打开终端，输入以下命令：
+git clone https://github.com/HRex39/rtl8852be_bt.git
+cd rtl8852be_bt
+lsusb
+make
+sudo make install
+reboot
+
+即重新安装蓝牙驱动。
+reboot 很重要，机器需要重启。
