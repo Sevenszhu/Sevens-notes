@@ -17,7 +17,7 @@ It can be done in **a glove box** without exposure to air, the whole process las
 ### 3.1 Substrate $Si$
 
 1. **Evaporate** an **adhesion metal layer($Ti$ or $Cr$)** and **$Au$ film** respectively on the $Si$ substrate(with 300 nm $SiO_2$ film).  (The machine in our lab **can only evaporate $Au$, $Ag$, $Al$ and some inorganic compound** whereas the recommended machine model is Peva-600E. And through the article, Al is of high activity to 2D layers.)
-2. The **evaporation rate** should be 0.5 Å $s^{-1}$.  The **optimal thickness** of $Au/Ti$ is 2 nm/ 2 nm.
+2. The **evaporation rate** should bedd  The **optimal thickness** of $Au/Ti$ is 2 nm/ 2 nm.
 
 ### 3.2 2D Crystal material
 
