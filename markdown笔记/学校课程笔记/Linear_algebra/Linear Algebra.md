@@ -98,7 +98,8 @@ $\Delta$ : $x \longrightarrow transformation \longrightarrow x^2$ is not a linea
 $\Delta$ : Some linear transformation
 
 - Perivative is linear transformation 
-- Intergral is linear transformation 
+- Intergral is linear transformatioalled, 0 to remove and 2 not upgraded.
+n 
 
 ## Chapter 1 Linear Equation in Linear Algebra
 
@@ -148,3 +149,4 @@ A system of linear equation is said to be consitent if it has either one solutio
     3. repalacement
 
 - **Echelon form**
+- 
