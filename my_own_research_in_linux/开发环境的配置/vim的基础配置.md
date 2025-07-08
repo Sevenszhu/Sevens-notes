@@ -3,11 +3,12 @@
 1. 基础操作设置	
 
 ```bash
+" vim 的标准设置
 syntax on                                 " 自动语法高亮
 set number                                " 显示行号
 set smartindent                           " 智能自动缩进
 set shiftwidth=4                          " 设置自动缩进时，每一级缩进4个空格的宽度
-set tabstop=4                             " 设定 tab 长度为 4 
+set tabstop=4                             " 设定 tab 长度为 4
 set expandtab                             " 将tab转换为等量的空格
 set softtabstop=4                         " 按退格键时一次删掉4个空格
 set nobackup                              " 覆盖文件时不备份
@@ -22,10 +23,15 @@ set matchtime=2                           " 短暂跳转到匹配括号的时间
 set hidden                                " 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
 set cmdheight=1                           " 设定命令行的行数为 1
 set cursorline                            " 突出显示当前行
+set cursorcolumn                          " 突出当前列
 set ruler                                 " 打开状态栏标尺
 set laststatus=2                          " 显示状态栏 (默认值为 1, 无法显示状态栏)
-set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\ 
-" 设置在状态行显示的信息
+colorscheme elflord                       " 设置背景主题
+
+" 文件头设置
+" 定义函数 SetTitle，自动插入文件头
+func! SetTitle()
+
 ```
 
 
@@ -79,6 +85,6 @@ func! SetTitle()
 endfunc
  
 " 当创建新的 C/C++ 文件时自动调用 SetTitle 函数
-autocmd BufNewFile *.cpp,*.c,*.cc exec ":call SetTitle()"
+autocmd BufNewFile * ":call SetTitle()"
 ```
 
